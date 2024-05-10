@@ -14,7 +14,9 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	Router()
+	InitRoutes()
 
-	log.Fatal(http.ListenAndServe(os.Getenv("PORT"), nil))
+	port := os.Getenv("PORT")
+	log.Printf("Server is starting on port %s\n", port)
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
