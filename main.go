@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"log"
+	"net/http"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -14,7 +14,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	fmt.Println(os.Getenv("TESTE"))
+	Router()
 
-	// now do something with s3 or whatever
+	log.Fatal(http.ListenAndServe(os.Getenv("PORT"), nil))
 }
